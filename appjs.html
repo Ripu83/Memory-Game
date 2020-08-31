@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipping Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+       *{
+            padding: 0;
+            margin:0;
+            box-sizing: border-box;
+        }
+
+        body{
+            /* width: 100vw; */
+            height: 100vh;
+            background-image: radial-gradient(rgba(58, 3, 3, 0.808), rgb(41, 0, 0),rgb(0,0,0));
+            display: flex;
+
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .game{
+            width: 600px;
+            height: 640px;
+            display: flex;
+            flex-wrap: wrap;
+            margin:auto;
+            perspective: 1000px;
+
+        }
+        .card{
+            width: calc(25% - 10px);
+            height: calc(25% - 10px);
+            margin:5px;
+            position: relative;
+            transform: scale(1);
+            transform-style: preserve-3d;
+            transition: transform .8s;
+        }
+        .card:hover{
+         cursor: pointer;
+        }       
+        .card:active{
+            transform: scale(.97);
+            transition: transform .2s;
+        }
+
+        .card.flip{
+            transform: rotateY(180deg);
+        }
+        .front,.back{
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            position: absolute;  
+            background:#df977a7e;
+            border-radius: 6px;
+            backface-visibility: hidden;
+        }
+        .back{
+            transform: rotateY(180deg);
+        }
+        .info{
+            
+            color:white;
+            display: grid;
+            grid-template-columns: auto auto;
+            /* margin-left: -240px; */
+            margin-right:50px;
+            margin-top: 100px;
+            flex-direction: column;
+        }
+        .info-left{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 25px;
+            color:white;
+            display: flex;
+            flex-direction: column;
+            margin-left:50px ;
+            margin-right:-50px ;
+            margin-top: 250px;
+            line-height: 40px;
+        }
+
+        input{
+            width:100px;
+            height: 32px;
+            font-family: 'Monoton', cursive;
+            font-size: 22px;
+            background-color: rgba(97, 25, 25, 0);
+            color:white;
+            border:none;
+            margin-top:0px;
+            margin-left:8px;
+        }
+        .info{
+            font-family: 'Monoton', cursive;
+            font-size: 22px;
+        }
+        .reset{
+            margin-top: -100px;
+            width: 50px;
+            height: 30px;
+            border:none;
+            background-color: rgba(97, 25, 25, 0);
+            cursor: pointer;
+            color:white;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 28px;
+        }
+
+        @media only screen  and(max-width:600px){
+            body{
+                width: 100vw;
+            }
+            section.info-left, section.info{
+                visibility: hidden;
+            }
+            .game{
+                width: 500px;
+                height: 540px;
+                display: flex;
+                flex-wrap: wrap;
+                margin:auto;
+            }
+            img{
+                width: 70px;
+                height: 70px;
+            }
+
+        }
+
+    </style>
+  
+</head>
+<body>
+  <section class="info-left">
+    <p>Flipping Game by</p><i><center>Ripusudan</center> </i>
+  </section>
+  <section class="game">
+      <div class="card" data-backface="burger">
+        <img src="img/burger.png" alt="burger" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="candy">
+        <img src="img/candy.png" alt="candy" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card"  data-backface="candy2">
+        <img src="img/candy2.png" alt="candy2" class="back"/>          
+        <img src="img/front.png " alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="cupcake">
+        <img src="img/cupcake.png" alt="cupcake" class="back"/>          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="flag">
+        <img src="img/flag.png" alt="flag" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="pizza">
+        <img src="img/pizza.png" alt="pizza" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="pastry">
+        <img src="img/pastry.png" alt="pastry" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="pumpkin">
+        <img src="img/pumpkin.png" alt="pumpkin" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="burger">
+        <img src="img/burger.png" alt="burger" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="candy"> 
+        <img src="img/candy.png" alt="candy" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="candy2">
+        <img src="img/candy2.png" alt="candy2" class="back" />          
+        <img src="img/front.png " alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="cupcake">
+        <img src="img/cupcake.png" alt="cupcake" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="flag">
+        <img src="img/flag.png" alt="flag" class="back" >          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="pizza"> 
+        <img src="img/pizza.png" alt="pizza" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card" data-backface="pastry">
+        <img src="img/pastry.png" alt="pastry" class="back" />          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      <div class="card"  data-backface="pumpkin">
+        <img src="img/pumpkin.png" alt="pumpkin" class="back"/>          
+        <img src="img/front.png" alt="front" class="front"/>
+      </div>
+      
+  </section>
+  <section class="info">
+    Flips:
+    <input type="text" id="flips" readonly value="0"/>
+    <button onclick="restart()" class="reset">Reset</button>
+  </section>
+<script >
+    const cards =document.querySelectorAll('.card');
+
+    let hasFlippedCard =false;
+    let freeze =false;
+    let firstCard, secondCard;
+    var count =0;
+    var noOfFlips=0;
+    function start(){
+        setTimeout( "JavaScript Statements", milliseconds );
+    }
+    function flipCard(){
+        if(freeze) return
+        if(this ===firstCard) return
+    
+        this.classList.add('flip');
+    
+        if(!hasFlippedCard){
+            hasFlippedCard=true;
+            firstCard=this;
+            noOfFlips+=1;
+        }
+        else{
+            
+            secondCard=this;
+    
+            if(firstCard.dataset.backface ===secondCard.dataset.backface){
+                //if both cards are same remove all events to block that card
+                firstCard.removeEventListener('click',flipCard)
+                secondCard.removeEventListener('click',flipCard)
+                count +=1; 
+                noOfFlips+=1; 
+                
+                // setTimeout(() =>{alert(count)},400) ;
+                if(count ==8){
+                    setTimeout(() =>{alert('Game Over,You Won')},500);
+                    setTimeout(() =>location.reload(true),1500);
+    
+                }
+                reset();
+                
+            }
+            else{
+                freeze=true;
+                //both card different
+                setTimeout(()=>{
+                firstCard.classList.remove('flip');
+                secondCard.classList.remove('flip');
+                
+                reset();
+                },1000);
+                
+                noOfFlips+=1;
+            }
+            document.getElementById("flips").value=noOfFlips;
+            
+        }
+    }
+    
+    function reset(){
+        hasFlippedCard=false;
+        freeze=false;
+        firstCard = null;
+        secondCard =null;
+    }
+    
+    (function shuffleCard(){
+        cards.forEach(card =>{
+            let position =Math.floor(Math.random()*16)
+            card.style.order = position;
+        });
+    })();
+    function restart(){
+        location.reload(true);}
+    cards.forEach(card => card.addEventListener('click',flipCard))
+    
+    
+    </script>  
+</body>
+</html>
